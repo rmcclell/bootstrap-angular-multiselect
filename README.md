@@ -1,4 +1,38 @@
-# BootstrapMultiselectWorkspace
+# bootstrap-angular-multiselect
+
+A **standalone Angular** implementation of the [PrimeNG MultiSelect](https://primeng.org) component, rebuilt from the ground up to use [Bootstrap](https://getbootstrap.com) as its only external dependency.
+
+## 🚀 Goal
+The primary goal of this project is to provide a lightweight, Bootstrap-native alternative to the [PrimeNG MultiSelect](https://primeng.org) while maintaining **1:1 API parity**. This allows developers to transition between packages seamlessly without changing component logic or template structures.
+
+*   **Source Code:** [rmcclell/bootstrap-angular-multiselect](https://github.com)
+*   **Original Blueprint:** [PrimeNG Official Site](https://primeng.org)
+
+## 🛠 Features
+- **Zero PrimeNG Overhead:** No need to import `primeng` or `primeicons`.
+- **Bootstrap Driven:** Uses standard [Bootstrap 5](https://getbootstrap.comdocs/5.0/getting-started/introduction/) classes for styling and layout.
+- **Identical API:** Every `@Input()` and `@Output()` is mirrored from the [original documentation](https://primeng.org).
+- **Template Support:** Supports custom content projection for items, headers, and footers.
+
+## 📋 API Mirror
+This library implements the [PrimeNG API](https://primeng.org) exactly to ensure compatibility:
+
+| Input / Output | Type | Description |
+| :--- | :--- | :--- |
+| `options` | `any[]` | An array of objects to display as options. |
+| `optionLabel` | `string` | Property name to use as the label. |
+| `optionValue` | `string` | Property name to use as the value. |
+| `filter` | `boolean` | Whether to show the search/filter input. |
+| `display` | `string` | Defines how to show selected items (`comma` or `chip`). |
+| `onChange` | `EventEmitter` | Callback to invoke when value changes. |
+
+## 🤝 Attribution & Credit
+This project is a Bootstrap-based port of the [MultiSelect component](https://primeng.org) developed by [PrimeTek](https://www.primetek.com.tr). 
+
+We extend our deep gratitude to the [PrimeNG Team](https://github.com) for their industry-leading UI/UX patterns. This implementation follows the functional logic established by the original creators to ensure a familiar developer experience.
+
+---
+*Maintained by [rmcclell](https://github.com). Licensed under MIT.*
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
 
@@ -63,3 +97,4 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
