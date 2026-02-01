@@ -31,6 +31,10 @@ This project is a Bootstrap-based port of the [MultiSelect component](https://pr
 
 We extend our deep gratitude to the [PrimeNG Team](https://github.com) for their industry-leading UI/UX patterns. This implementation follows the functional logic established by the original creators to ensure a familiar developer experience.
 
+## 🤖 Built with Intelligence
+This project’s documentation, deployment architecture, and GitHub integration were refined with the assistance of **Google Antigravity Editor** and **Gemini**. These tools helped ensure the [Bootstrap-native implementation](https://github.com) maintains strict [PrimeNG API parity](https://primeng.org) while streamlining the transition to a standalone [Angular](https://angular.dev) architecture.
+
+
 # Bootstrap Angular MultiSelect
 
 [![Live Demo](https://img.shields.io)](https://rmcclell.github.io/bootstrap-angular-multiselect/)
@@ -141,6 +145,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
 
 
 
