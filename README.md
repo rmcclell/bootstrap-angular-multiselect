@@ -31,6 +31,10 @@ This project is a Bootstrap-based port of the [MultiSelect component](https://pr
 
 We extend our deep gratitude to the [PrimeNG Team](https://github.com) for their industry-leading UI/UX patterns. This implementation follows the functional logic established by the original creators to ensure a familiar developer experience.
 
+## Screeshot of Demo
+
+<img width="1920" height="11535" alt="Screenshot 2026-01-31 at 22-34-02 Demo" src="https://github.com/user-attachments/assets/57f4c0b4-24d8-4560-835d-2f55c4b883de" />
+
 ---
 *Maintained by [rmcclell](https://github.com). Licensed under MIT.*
 
@@ -97,4 +101,5 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
 
