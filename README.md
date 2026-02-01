@@ -55,10 +55,13 @@ npm install bootstrap-angular-multiselect
 
 ## Screeshot of Demo
 
+<img width="1920" height="3930" alt="Screenshot 2026-02-01 at 01-03-42 Demo" src="https://github.com/user-attachments/assets/9e385aca-2497-426d-a6ae-0c0cfe68ee09" />
+
 <img width="1580" height="613" alt="Screenshot 2026-01-31 at 22-34-02 Demo-1-chips" src="https://github.com/user-attachments/assets/c7899c24-840e-45cd-ba68-aef9d19cf43e" />
 <img width="1585" height="348" alt="Screenshot 2026-02-01 at 00-08-26 Demo-filtering" src="https://github.com/user-attachments/assets/861c5228-4613-4079-9e58-e14ae53bfa23" />
 <img width="1572" height="557" alt="Screenshot 2026-02-01 at 00-13-11 Demo-grouping" src="https://github.com/user-attachments/assets/71dd1306-4ef2-4e75-b474-b05502f33667" />
 <img width="1581" height="538" alt="Screenshot 2026-02-01 002012-custom-template" src="https://github.com/user-attachments/assets/eed5ad0d-fc37-498a-ac99-ff98b414267c" />
+
 <img width="1920" height="2662" alt="Screenshot 2026-02-01 at 00-22-07 Demo" src="https://github.com/user-attachments/assets/68fbf1b9-74a7-440e-b9d2-17d88b68ca7a" />
 
 ---
@@ -127,6 +130,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
 
 
 
