@@ -31,6 +31,24 @@ This project is a Bootstrap-based port of the [MultiSelect component](https://pr
 
 We extend our deep gratitude to the [PrimeNG Team](https://github.com) for their industry-leading UI/UX patterns. This implementation follows the functional logic established by the original creators to ensure a familiar developer experience.
 
+# Bootstrap Angular MultiSelect
+
+[![Live Demo](https://img.shields.io)](https://rmcclell.github.io/bootstrap-angular-multiselect/)
+[![License: MIT](https://img.shields.io)](https://opensource.org)
+
+A lightweight, **standalone Angular** version of the [PrimeNG MultiSelect](https://primeng.org) designed to work exclusively with [Bootstrap](https://getbootstrap.com).
+
+## 🌟 Why this exists?
+Standard [PrimeNG](https://primeng.org) components often require a large suite of dependencies (`primeng`, `primeicons`, `primeflex`). This project provides a **1:1 API mirror** of the MultiSelect component, stripped down to use only [Bootstrap 5](https://getbootstrap.com) for styling. It’s perfect for projects that want the PrimeNG developer experience without the extra bundle bloat.
+
+## 🚀 [Live Demo](https://rmcclell.github.io/bootstrap-angular-multiselect/)
+Check out the component in action, styled entirely with Bootstrap.
+
+## 📦 Installation
+```bash
+npm install bootstrap-angular-multiselect
+
+
 ## Screeshot of Demo
 
 <img width="1920" height="878" alt="Screenshot 2026-02-01 at 00-12-34 Demo" src="https://github.com/user-attachments/assets/c2388420-80d2-4421-8f49-7ecc96ad9806" />
@@ -123,6 +141,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
 
 
 
