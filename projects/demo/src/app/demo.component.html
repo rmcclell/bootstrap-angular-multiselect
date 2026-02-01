@@ -1,0 +1,728 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Side Navigation -->
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar position-sticky"
+      style="top: 56px; height: calc(100vh - 56px); overflow-y: auto;">
+      <div class="position-sticky pt-3">
+        <h6 class="sidebar-heading px-3 mt-2 mb-3 text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">
+          Examples
+        </h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="#basic">Basic</a></li>
+          <li class="nav-item"><a class="nav-link" href="#chips">Chips</a></li>
+          <li class="nav-item"><a class="nav-link" href="#filtering">Filtering</a></li>
+          <li class="nav-item"><a class="nav-link" href="#grouping">Grouping</a></li>
+          <li class="nav-item"><a class="nav-link" href="#template">Custom Template</a></li>
+          <li class="nav-item"><a class="nav-link" href="#loading">Loading</a></li>
+          <li class="nav-item"><a class="nav-link" href="#virtual-scroll">Virtual Scroll</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clear-icon">Clear Icon</a></li>
+          <li class="nav-item"><a class="nav-link" href="#float-label">Float Label</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sizes">Sizes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#fluid">Fluid</a></li>
+          <li class="nav-item"><a class="nav-link" href="#filled">Filled Variant</a></li>
+          <li class="nav-item"><a class="nav-link" href="#disabled">Disabled</a></li>
+          <li class="nav-item"><a class="nav-link" href="#invalid">Invalid</a></li>
+          <li class="nav-item"><a class="nav-link" href="#forms">Forms</a></li>
+          <li class="nav-item"><a class="nav-link" href="#accessibility">Accessibility</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="py-4">
+        <h1 class="mb-3">MultiSelect</h1>
+        <p class="lead text-muted">MultiSelect is used to select multiple items from a collection.</p>
+
+        <!-- Basic -->
+        <section id="basic" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Basic</h2>
+          <p>MultiSelect is used as a controlled component with <code>ngModel</code> property along with an
+            <code>options</code> collection. Label and value of an option are defined with the <code>optionLabel</code>
+            and <code>optionValue</code> properties respectively.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities" optionLabel="name"
+                placeholder="Select Cities"></lib-multi-select>
+              <div class="mt-3 small text-muted">Selected: {{ selectedCities | json }}</div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="6" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities" 
+  optionLabel="name" 
+  placeholder="Select Cities"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Chips -->
+        <section id="chips" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Chips</h2>
+          <p>Selected values are displayed as chips by setting the <code>display</code> property to <code>"chip"</code>.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities2" optionLabel="name" display="chip"
+                placeholder="Select Cities"></lib-multi-select>
+              <div class="mt-3 small text-muted">Selected: {{ selectedCities2 | json }}</div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="7" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities2" 
+  optionLabel="name" 
+  display="chip"
+  placeholder="Select Cities"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Filtering -->
+        <section id="filtering" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Filtering</h2>
+          <p>Options can be filtered using an input field by enabling the <code>filter</code> property. By default
+            filtering is done against label of the items and <code>filterPlaceholder</code> can be used to define a
+            placeholder for the filter input.</p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities3" optionLabel="name" [filter]="true"
+                filterPlaceholder="Search cities..." placeholder="Select Cities"></lib-multi-select>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="8" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities3" 
+  optionLabel="name" 
+  [filter]="true"
+  filterPlaceholder="Search cities..."
+  placeholder="Select Cities"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Grouping -->
+        <section id="grouping" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Grouping</h2>
+          <p>Options can be grouped when a nested data structure is provided. To define the label of a group
+            <code>optionGroupLabel</code> property is needed and also <code>optionGroupChildren</code> is required to
+            define the property that refers to the children of a group.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="groupedCities" [(ngModel)]="selectedGroupedCities" [group]="true"
+                optionLabel="label" optionValue="value" optionGroupLabel="label" optionGroupChildren="items"
+                placeholder="Select Cities by Country">
+                <ng-template #group let-group>
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="images/flag_placeholder.png" [class]="'mr-2 flag flag-' + group.value"
+                      style="width: 20px" />
+                    <span>{{ group.label }}</span>
+                  </div>
+                </ng-template>
+              </lib-multi-select>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="16" style="resize: none;"
+                ngNonBindable>&lt;lib-multi-select 
+  [options]="groupedCities" 
+  [(ngModel)]="selectedGroupedCities" 
+  [group]="true" 
+  optionLabel="label" 
+  optionValue="value" 
+  optionGroupLabel="label" 
+  optionGroupChildren="items" 
+  placeholder="Select Cities by Country"&gt;
+  &lt;ng-template #group let-group&gt;
+    &lt;div class="d-flex align-items-center gap-2"&gt;
+      &lt;img src="images/flag_placeholder.png" [class]="'mr-2 flag flag-' + group.value" style="width: 20px" /&gt;
+      &lt;span&gt;{{ group.label }}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/ng-template&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Custom Template -->
+        <section id="template" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Custom Template</h2>
+          <p>Label of an option is used as the display text of an item by default, for custom content support define an
+            <code>item</code> template that gets the option instance as a parameter.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="countries" [(ngModel)]="selectedCountries" optionLabel="name"
+                placeholder="Select Countries">
+                <ng-template #item let-country>
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="images/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()"
+                      style="width: 18px" />
+                    <span>{{ country.name }} ({{ country.code }})</span>
+                  </div>
+                </ng-template>
+              </lib-multi-select>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="13" style="resize: none;"
+                ngNonBindable>&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities5" 
+  optionLabel="name" 
+  placeholder="Select Cities"&gt;
+  &lt;ng-template #item let-city&gt;
+    &lt;div class="d-flex align-items-center gap-2"&gt;
+      &lt;i class="bi bi-flag"&gt;&lt;/i&gt;
+      &lt;span&gt;{{ city.name }} ({{ city.code }})&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/ng-template&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Loading -->
+        <section id="loading" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Loading</h2>
+          <p>Loading state can be used to indicate data load is in progress. Set <code>loading</code> property to
+            <code>true</code> to display a loading indicator.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities6" optionLabel="name"
+                [loading]="isLoading" placeholder="Select Cities"></lib-multi-select>
+              <div class="mt-3">
+                <button class="btn btn-sm btn-outline-primary" (click)="isLoading = !isLoading">
+                  Toggle Loading
+                </button>
+                <span class="ms-2 small text-muted">State: {{ isLoading ? 'Loading...' : 'Ready' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="7" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities6" 
+  optionLabel="name" 
+  [loading]="isLoading"
+  placeholder="Select Cities"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Virtual Scroll -->
+        <section id="virtual-scroll" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Virtual Scroll</h2>
+          <p>VirtualScrolling is an efficient way of rendering large lists. Enable <code>virtualScroll</code> and set
+            <code>virtualScrollItemSize</code> to define the height of an item.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="virtualCities" [(ngModel)]="selectedVirtualCities" optionLabel="name"
+                [virtualScroll]="true" [virtualScrollItemSize]="43"
+                placeholder="Select from 10,000 Cities"></lib-multi-select>
+              <div class="mt-3 small text-muted">Selected count: {{ selectedVirtualCities.length }}</div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="8" style="resize: none;">&lt;lib-multi-select 
+  [options]="virtualCities" 
+  [(ngModel)]="selectedVirtualCities" 
+  optionLabel="name" 
+  [virtualScroll]="true" 
+  [virtualScrollItemSize]="43"
+  placeholder="Select from 10,000 Cities"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Clear Icon -->
+        <section id="clear-icon" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Clear Icon</h2>
+          <p>When <code>showClear</code> is enabled, a clear icon is displayed to reset the value.</p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities8" optionLabel="name" [showClear]="true"
+                placeholder="Select Cities"></lib-multi-select>
+              <div class="mt-3 small text-muted">Selected: {{ selectedCities8 | json }}</div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="7" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities8" 
+  optionLabel="name" 
+  [showClear]="true"
+  placeholder="Select Cities"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Float Label -->
+        <section id="float-label" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Float Label</h2>
+          <p>A floating label appears on top of the input field when focused. Use the <code>label</code> property to
+            define the label text and <code>floatLabelVariant</code> to choose between variants.</p>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">In Label</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities4" optionLabel="name"
+                    label="Select City" floatLabelVariant="in"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">On Label</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities5" optionLabel="name"
+                    label="Select City" floatLabelVariant="on"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Over Label</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities6" optionLabel="name"
+                    label="Select City" floatLabelVariant="over"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">IFTA Label</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities7" optionLabel="name"
+                    label="Select City" [iftaLabel]="true"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="11" style="resize: none;">&lt;!-- In Label --&gt;
+&lt;lib-multi-select label="Select City" floatLabelVariant="in" ...&gt;&lt;/lib-multi-select&gt;
+
+&lt;!-- On Label --&gt;
+&lt;lib-multi-select label="Select City" floatLabelVariant="on" ...&gt;&lt;/lib-multi-select&gt;
+
+&lt;!-- Over Label --&gt;
+&lt;lib-multi-select label="Select City" floatLabelVariant="over" ...&gt;&lt;/lib-multi-select&gt;
+
+&lt;!-- IFTA Label --&gt;
+&lt;lib-multi-select label="Select City" [iftaLabel]="true" ...&gt;&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sizes -->
+        <section id="sizes" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Sizes</h2>
+          <p>MultiSelect provides <code>small</code> and <code>large</code> sizes as alternatives to the base.</p>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Small</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCitiesSmall" optionLabel="name" size="small"
+                    placeholder="Select City"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Normal</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities" optionLabel="name"
+                    placeholder="Select City"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Large</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCitiesLarge" optionLabel="name" size="large"
+                    placeholder="Select City"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="5" style="resize: none;">&lt;lib-multi-select size="small" ...&gt;&lt;/lib-multi-select&gt;
+&lt;lib-multi-select ...&gt;&lt;/lib-multi-select&gt;
+&lt;lib-multi-select size="large" ...&gt;&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Fluid -->
+        <section id="fluid" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Fluid</h2>
+          <p>Span the full width of the parent container by enabling the <code>fluid</code> property.</p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities" optionLabel="name" [fluid]="true"
+                placeholder="Fluid MultiSelect"></lib-multi-select>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="7" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities" 
+  optionLabel="name" 
+  [fluid]="true"
+  placeholder="Fluid MultiSelect"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Filled Variant -->
+        <section id="filled" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Filled Variant</h2>
+          <p>Specify the <code>variant</code> property as <code>"filled"</code> to display the component with a filled
+            style.</p>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Filled</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities9" optionLabel="name" variant="filled"
+                    placeholder="Filled MultiSelect"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Filled with Label</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities" optionLabel="name" variant="filled"
+                    label="Select City"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="7" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities" 
+  optionLabel="name" 
+  variant="filled"
+  placeholder="Filled MultiSelect"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Disabled -->
+        <section id="disabled" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Disabled</h2>
+          <p>When <code>disabled</code> is present, the element cannot be edited and focused.</p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [disabled]="true" optionLabel="name"
+                placeholder="Disabled MultiSelect"></lib-multi-select>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="6" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [disabled]="true" 
+  optionLabel="name" 
+  placeholder="Disabled MultiSelect"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Invalid -->
+        <section id="invalid" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Invalid</h2>
+          <p>Invalid state is displayed using the <code>invalid</code> property to indicate a failed validation.</p>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Standard Invalid</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities10" optionLabel="name"
+                    [invalid]="true" placeholder="Invalid MultiSelect"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Filled Invalid</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities" optionLabel="name" [invalid]="true"
+                    variant="filled" placeholder="Invalid Filled"></lib-multi-select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="7" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities" 
+  optionLabel="name" 
+  [invalid]="true"
+  placeholder="Invalid MultiSelect"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Forms -->
+        <section id="forms" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Forms</h2>
+          <p>MultiSelect is compatible with both Reactive and Template-driven forms.</p>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <div class="card shadow-sm border-top border-primary border-4">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Reactive Forms</h6>
+                  <form [formGroup]="formGroup">
+                    <lib-multi-select [options]="cities" formControlName="selectedCities" optionLabel="name"
+                      placeholder="Select Cities"></lib-multi-select>
+                    <div class="mt-3">
+                      <button type="button" class="btn btn-primary btn-sm me-2"
+                        (click)="formGroup.reset()">Reset</button>
+                      <span class="small text-muted">Value: {{ formGroup.value.selectedCities | json }}</span>
+                    </div>
+                    <div class="mt-1 small" [class.text-danger]="formGroup.invalid"
+                      [class.text-success]="formGroup.valid">
+                      Status: {{ formGroup.status }}
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card shadow-sm border-top border-success border-4">
+                <div class="card-body">
+                  <h6 class="card-title mb-3 text-uppercase small">Template-Driven</h6>
+                  <lib-multi-select [options]="cities" [(ngModel)]="selectedCities10" optionLabel="name"
+                    #templateForm="ngModel" required placeholder="Select Cities"></lib-multi-select>
+                  <div class="mt-3">
+                    <button type="button" class="btn btn-success btn-sm me-2"
+                      (click)="selectedCities10 = []">Clear</button>
+                    <span class="small text-muted">Value: {{ selectedCities10 | json }}</span>
+                  </div>
+                  <div class="mt-1 small" [class.text-danger]="templateForm.invalid"
+                    [class.text-success]="templateForm.valid">
+                    Valid: {{ templateForm.valid }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="15" style="resize: none;">&lt;!-- Reactive Forms --&gt;
+&lt;form [formGroup]="formGroup"&gt;
+  &lt;lib-multi-select 
+    [options]="cities" 
+    formControlName="selectedCities" 
+    optionLabel="name" 
+    placeholder="Select Cities"&gt;
+  &lt;/lib-multi-select&gt;
+&lt;/form&gt;
+
+&lt;!-- Template-driven Forms --&gt;
+&lt;lib-multi-select 
+  [(ngModel)]="selectedCities" 
+  required 
+  ...&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Accessibility -->
+        <section id="accessibility" class="mb-5">
+          <h2 class="border-bottom pb-2 mb-3">Accessibility</h2>
+
+          <h5 class="fw-bold mb-3">Screen Reader</h5>
+          <p>MultiSelect component uses the <code>combobox</code> role in addition to <code>aria-haspopup</code> and
+            <code>aria-expanded</code> attributes. The value to describe the component can be defined with
+            <code>ariaLabelledBy</code> and <code>ariaLabel</code> props.
+          </p>
+
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <lib-multi-select [options]="cities" [(ngModel)]="selectedCities" optionLabel="name"
+                ariaLabel="City Selection" placeholder="Screen Reader Accessible"></lib-multi-select>
+            </div>
+          </div>
+
+          <h5 class="fw-bold mb-3 mt-4">Keyboard Support</h5>
+          <div class="table-responsive mb-3">
+            <table class="table table-bordered table-sm">
+              <thead class="table-light">
+                <tr>
+                  <th style="width: 25%;">Key</th>
+                  <th>Function</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><kbd>Tab</kbd></td>
+                  <td>Moves focus to the multiselect element.</td>
+                </tr>
+                <tr>
+                  <td><kbd>Space</kbd></td>
+                  <td>Opens the popup and moves visual focus to the selected option.</td>
+                </tr>
+                <tr>
+                  <td><kbd>Enter</kbd></td>
+                  <td>Opens the popup and moves visual focus to the selected option.</td>
+                </tr>
+                <tr>
+                  <td><kbd>Down Arrow</kbd></td>
+                  <td>Opens the popup and moves visual focus to the first option.</td>
+                </tr>
+                <tr>
+                  <td><kbd>Up Arrow</kbd></td>
+                  <td>Moves focus to the previous option.</td>
+                </tr>
+                <tr>
+                  <td><kbd>Home</kbd></td>
+                  <td>Moves focus to the first option.</td>
+                </tr>
+                <tr>
+                  <td><kbd>End</kbd></td>
+                  <td>Moves focus to the last option.</td>
+                </tr>
+                <tr>
+                  <td><kbd>Escape</kbd></td>
+                  <td>Closes the popup.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-header bg-light">
+              <strong>Code</strong>
+            </div>
+            <div class="card-body p-0">
+              <textarea readonly class="form-control border-0 font-monospace small" rows="8" style="resize: none;">&lt;lib-multi-select 
+  [options]="cities" 
+  [(ngModel)]="selectedCities" 
+  optionLabel="name" 
+  ariaLabel="City Selection"
+  ariaLabelledBy="label-id"
+  ariaDescribedBy="desc-id"
+  placeholder="Screen Reader Accessible"&gt;
+&lt;/lib-multi-select&gt;</textarea>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>

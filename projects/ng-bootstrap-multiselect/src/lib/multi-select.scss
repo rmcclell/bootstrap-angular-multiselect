@@ -1,0 +1,270 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.multi-select-container {
+    position: relative;
+    width: 100%;
+}
+
+.form-select {
+    min-height: 38px;
+    background-image: none;
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+    padding-right: 1rem;
+    border-color: var(--bs-secondary-color);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, padding .1s ease-in-out;
+}
+
+/* Floating Label Base */
+.form-floating {
+    position: relative;
+
+    .floating-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        height: 100%;
+        padding: .5rem .75rem;
+        overflow: hidden;
+        text-align: start;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        pointer-events: none;
+        border: 1px solid transparent;
+        transform-origin: 0 0;
+        transition: opacity .15s ease-in-out, transform .15s ease-in-out, color .15s ease-in-out;
+        color: var(--bs-secondary-color);
+        display: flex;
+        align-items: center;
+    }
+
+    /* Variant: In (Inside/Bootstrap) */
+    &.variant-in {
+        .form-select {
+            padding-top: 1.625rem;
+            padding-bottom: .625rem;
+            min-height: calc(3.5rem + 2px);
+
+            &:not(.has-value):not(.is-focused) {
+                padding-top: .375rem;
+                padding-bottom: .375rem;
+            }
+        }
+
+        .form-select.has-value~.floating-label,
+        .form-select.is-focused~.floating-label {
+            opacity: .65;
+            transform: scale(.85) translateY(-.8rem) translateX(.15rem);
+            color: var(--bs-primary);
+        }
+
+        .form-select-sm {
+            padding-top: 1.25rem;
+            padding-bottom: .25rem;
+            min-height: calc(2.5rem + 2px);
+
+            &.has-value~.floating-label,
+            &.is-focused~.floating-label {
+                transform: scale(.75) translateY(-.65rem) translateX(.15rem);
+            }
+        }
+
+        .form-select-lg {
+            padding-top: 1.875rem;
+            padding-bottom: .75rem;
+            min-height: calc(4.5rem + 2px);
+
+            &.has-value~.floating-label,
+            &.is-focused~.floating-label {
+                transform: scale(.9) translateY(-1rem) translateX(.15rem);
+            }
+        }
+    }
+
+    /* Variant: On (On the Border) */
+    &.variant-on {
+        .floating-label {
+            padding: 0 .5rem;
+            margin-left: .75rem;
+            height: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+        }
+
+        .form-select.has-value~.floating-label,
+        .form-select.is-focused~.floating-label {
+            top: 0;
+            transform: translateY(-50%) scale(.85);
+            background-color: var(--bs-body-bg);
+            padding: 0 4px;
+            color: var(--bs-primary);
+            opacity: 1;
+        }
+    }
+
+    /* Variant: Over (Above the border) */
+    &.variant-over {
+        margin-top: 1.25rem;
+
+        .floating-label {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .form-select.has-value~.floating-label,
+        .form-select.is-focused~.floating-label {
+            top: -1.25rem;
+            transform: translateY(0) scale(.85);
+            color: var(--bs-primary);
+            opacity: 1;
+        }
+    }
+
+    /* Variant: Ifta (In-Field Top-Aligned) */
+    &.variant-iftalabel {
+        .form-select {
+            padding-top: 1.625rem;
+            padding-bottom: .625rem;
+            min-height: calc(3.5rem + 2px);
+        }
+
+        .floating-label {
+            opacity: 1;
+            transform: scale(.85) translateY(-.8rem) translateX(.15rem);
+            color: var(--bs-secondary-color);
+        }
+
+        .form-select.is-focused~.floating-label {
+            color: var(--bs-primary);
+        }
+    }
+}
+
+.form-select.disabled {
+    background-color: var(--bs-secondary-bg);
+    pointer-events: none;
+    opacity: .65;
+}
+
+.dropdown-menu {
+    z-index: 1050;
+    max-width: 100%;
+    margin-top: 2px;
+}
+
+.dropdown-item {
+    padding: .5rem 1rem;
+
+    &:hover {
+        background-color: var(--bs-light);
+    }
+
+    &.is-focused {
+        border-color: var(--bs-primary);
+        box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+    }
+
+    &.variant-filled {
+        background-color: var(--bs-secondary-bg);
+        border-bottom: 1px solid var(--bs-secondary-color);
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+
+        &:hover {
+            background-color: var(--bs-tertiary-bg);
+        }
+
+        &.is-focused {
+            background-color: var(--bs-tertiary-bg);
+            border-bottom-color: var(--bs-primary);
+            box-shadow: none;
+        }
+    }
+
+    &.active {
+        background-color: var(--bs-primary);
+        color: #FFF;
+
+        .form-check-input {
+            border-color: #FFF;
+        }
+    }
+
+    .form-check-input {
+        border-color: var(--bs-secondary-color);
+    }
+}
+
+.badge {
+    font-weight: 500;
+    padding: .35em .65em;
+
+    i {
+        font-size: .8em;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--bs-light);
+        }
+    }
+}
+
+.dropdown-header {
+    color: var(--bs-body-color);
+    text-transform: none;
+    font-size: 1rem;
+}
+
+.input-group-text {
+    i {
+        color: var(--bs-secondary-color);
+    }
+}
+
+.animation-spin {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+}
+
+.clear-icon {
+    font-size: .95em;
+    cursor: pointer;
+    transition: opacity .15s ease-in-out, color .15s ease-in-out;
+    z-index: 5;
+    color: var(--bs-secondary-color);
+
+    &:hover {
+        opacity: 1 !important;
+        color: var(--bs-danger) !important;
+    }
+}
+
+.overlay-hover-opacity {
+    &:hover {
+        opacity: .8;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

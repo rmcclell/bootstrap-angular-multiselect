@@ -1,0 +1,159 @@
+<div class="dropdown" [class.show]="overlayVisible" [class.w-100]="fluid" #container (keydown)="onKeydown($event)">
+    <div class="multi-select-container" [class.form-floating]="label || iftaLabel"
+        [class.variant-in]="floatLabelVariant === 'in' && !iftaLabel"
+        [class.variant-on]="floatLabelVariant === 'on' && !iftaLabel"
+        [class.variant-over]="floatLabelVariant === 'over' && !iftaLabel" [class.variant-iftalabel]="iftaLabel">
+        <div class="form-select d-flex align-items-center justify-content-between cursor-pointer"
+            [class.disabled]="disabled" [class.has-value]="selectedOptions.length > 0" [class.is-focused]="isFocused"
+            [class.form-select-sm]="size === 'small'" [class.form-select-lg]="size === 'large'"
+            [class.variant-filled]="variant === 'filled'" [class.is-invalid]="invalid" (click)="toggleOverlay()"
+            [attr.aria-expanded]="overlayVisible" role="combobox" aria-haspopup="listbox"
+            [attr.tabindex]="disabled ? -1 : 0" [attr.aria-disabled]="disabled" [attr.aria-label]="ariaLabel"
+            [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy" #inputWrapper>
+            <div class="flex-grow-1 overflow-hidden text-truncate">
+                @if (display === 'comma') {
+                @if (selectedOptions.length > 0) {
+                {{ selectedLabels }}
+                } @else if (!label) {
+                <span class="text-muted">{{ placeholder }}</span>
+                }
+                } @else if (display === 'chip') {
+                <div class="d-flex flex-wrap gap-1">
+                    @for (option of selectedOptions; track option) {
+                    <span class="badge rounded-pill bg-primary d-flex align-items-center gap-1">
+                        {{ getOptionLabel(option) }}
+                        <i class="bi bi-x-circle-fill cursor-pointer" (click)="unselect($event, option)"></i>
+                    </span>
+                    }
+                    @if (selectedOptions.length === 0 && !label) {
+                    <span class="text-muted">{{ placeholder }}</span>
+                    }
+                </div>
+                }
+            </div>
+            @if (loading) {
+            <i class="bi {{loadingIcon}} animation-spin ms-2" aria-hidden="true"></i>
+            } @else {
+            <div class="d-flex align-items-center ms-2">
+                @if (showClear && selectedOptions.length > 0) {
+                <i class="bi bi-x-circle-fill clear-icon me-2 opacity-75" (click)="clearSelections($event)"
+                    aria-label="Clear selection" title="Clear All"></i>
+                }
+                <i class="bi bi-chevron-down"></i>
+            </div>
+            }
+        </div>
+        @if (label) {
+        <label class="floating-label" (click)="toggleOverlay()">{{ label }}</label>
+        }
+    </div>
+
+    <div class="dropdown-menu w-100 shadow p-0" [class.show]="overlayVisible" role="listbox">
+        @if (showHeader) {
+        <div class="dropdown-header border-bottom bg-light p-2">
+            <div class="d-flex align-items-center gap-2">
+                <div class="form-check m-0">
+                    <input class="form-check-input" type="checkbox" [checked]="isAllSelected()"
+                        (change)="toggleAll($event)" [indeterminate]="isPartiallySelected()">
+                </div>
+                @if (filter) {
+                <div class="input-group input-group-sm flex-grow-1">
+                    <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control border-start-0" [placeholder]="filterPlaceholder"
+                        (input)="onFilterInput($event)" #filterInput>
+                </div>
+                }
+                <button type="button" class="btn-close btn-sm" aria-label="Close" (click)="hide()"></button>
+            </div>
+        </div>
+        }
+
+        <div class="overflow-auto" [style.max-height]="scrollHeight">
+            @if (virtualScroll && !group) {
+            <cdk-virtual-scroll-viewport [itemSize]="virtualScrollItemSize" [style.height]="scrollHeight" class="w-100">
+                <div *cdkVirtualFor="let option of filteredOptions; let i = index"
+                    class="dropdown-item d-flex align-items-center gap-2 cursor-pointer"
+                    [class.active]="isOptionFocused(i)" [class.disabled]="isOptionDisabled(option)"
+                    (click)="onOptionClick(option)" role="option" [attr.aria-selected]="isSelected(option)">
+                    <div class="form-check m-0">
+                        <input class="form-check-input" type="checkbox" [checked]="isSelected(option)"
+                            (click)="$event.stopPropagation()">
+                    </div>
+                    <span class="flex-grow-1">
+                        @if (itemTemplate) {
+                        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
+                        } @else {
+                        {{ getOptionLabel(option) }}
+                        }
+                    </span>
+                </div>
+            </cdk-virtual-scroll-viewport>
+            } @else {
+            @if (group) {
+            @for (groupItem of filteredOptions; track getGroupLabel(groupItem)) {
+            @if (groupItem) {
+            <div class="dropdown-header fw-bold bg-light py-2 border-bottom border-top mt-1 first-child-no-top-border">
+                @if (groupTemplate) {
+                <ng-container *ngTemplateOutlet="groupTemplate; context: { $implicit: groupItem }"></ng-container>
+                } @else {
+                {{ getGroupLabel(groupItem) }}
+                }
+            </div>
+            @for (option of getGroupChildren(groupItem); track getOptionValue(option); let i = $index) {
+            @if (option) {
+            <div class="dropdown-item d-flex align-items-center gap-2 cursor-pointer"
+                [class.disabled]="isOptionDisabled(option)" (click)="onOptionClick(option)" role="option"
+                [attr.aria-selected]="isSelected(option)">
+                <div class="form-check m-0 ms-2">
+                    <input class="form-check-input" type="checkbox" [checked]="isSelected(option)"
+                        (click)="$event.stopPropagation()">
+                </div>
+                <span class="flex-grow-1">
+                    @if (itemTemplate) {
+                    <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
+                    } @else {
+                    {{ getOptionLabel(option) }}
+                    }
+                </span>
+            </div>
+            }
+            }
+            }
+            }
+            } @else {
+            @for (option of filteredOptions; track getOptionValue(option); let i = $index) {
+            @if (option) {
+            <div class="dropdown-item d-flex align-items-center gap-2 cursor-pointer"
+                [class.active]="isOptionFocused(i)" [class.disabled]="isOptionDisabled(option)"
+                (click)="onOptionClick(option)" role="option" [attr.aria-selected]="isSelected(option)">
+                <div class="form-check m-0">
+                    <input class="form-check-input" type="checkbox" [checked]="isSelected(option)"
+                        (click)="$event.stopPropagation()">
+                </div>
+                <span class="flex-grow-1">
+                    @if (itemTemplate) {
+                    <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
+                    } @else {
+                    {{ getOptionLabel(option) }}
+                    }
+                </span>
+            </div>
+            }
+            }
+            }
+            }
+
+            @if (!filteredOptions || filteredOptions.length === 0) {
+            <div class="p-3 text-center text-muted">
+                {{ emptyMessage }}
+            </div>
+            }
+        </div>
+
+        @if (footerTemplate) {
+        <div class="dropdown-footer border-top p-2">
+            <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+        </div>
+        }
+    </div>
+</div>
