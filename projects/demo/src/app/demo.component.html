@@ -141,7 +141,7 @@
                 placeholder="Select Cities by Country">
                 <ng-template #group let-group>
                   <div class="d-flex align-items-center gap-2">
-                    <img src="images/flag_placeholder.png" [class]="'mr-2 flag flag-' + group.value"
+                    <img [src]="'images/flag_placeholder.png'" [class]="'mr-2 flag flag-' + group.value"
                       style="width: 20px" />
                     <span>{{ group.label }}</span>
                   </div>
@@ -167,7 +167,7 @@
   placeholder="Select Cities by Country"&gt;
   &lt;ng-template #group let-group&gt;
     &lt;div class="d-flex align-items-center gap-2"&gt;
-      &lt;img src="images/flag_placeholder.png" [class]="'mr-2 flag flag-' + group.value" style="width: 20px" /&gt;
+      &lt;img [src]="'images/flag_placeholder.png'" [class]="'mr-2 flag flag-' + group.value" style="width: 20px" /&gt;
       &lt;span&gt;{{ group.label }}&lt;/span&gt;
     &lt;/div&gt;
   &lt;/ng-template&gt;
@@ -189,7 +189,7 @@
                 placeholder="Select Countries">
                 <ng-template #item let-country>
                   <div class="d-flex align-items-center gap-2">
-                    <img src="images/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()"
+                    <img [src]="'images/flag_placeholder.png'" [class]="'flag flag-' + country.code.toLowerCase()"
                       style="width: 18px" />
                     <span>{{ country.name }} ({{ country.code }})</span>
                   </div>

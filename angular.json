@@ -49,28 +49,32 @@
             "browser": "projects/demo/src/main.ts",
             "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/demo/public"
+              ]
+            },
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/demo/public"
+                "input": "projects/demo/public",
+                "output": "/"
               }
             ],
-            "styles": [
-              "projects/demo/src/styles.scss"
-            ]
+            "styles": ["projects/demo/src/styles.scss"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "15kb",
+                  "maximumError": "20kb"
                 }
               ],
               "outputHashing": "all"
@@ -97,6 +101,9 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
